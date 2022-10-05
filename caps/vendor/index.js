@@ -10,7 +10,7 @@ const createSendMessage = require('./notificattion');
 const sendMessage = createSendMessage(socket);
 
 // join caps
-socket.emit('JOIN', 'caps');
+socket.emit('JOIN', 'vendor');
 
 // 
 socket.on('RECIEVED', handleRecieved);
@@ -18,9 +18,9 @@ socket.on('RECIEVED', handleRecieved);
 setInterval(() => {
   const order = {
     store: chance.company(),
-    orderID: chance.guid({version: 4}),
+    orderId: chance.guid({version: 4}),
     customer: chance.name(),
     address: chance.address(),
   };
-  sendMessage(`DRIVER-- Package ready for pickup ${chance.first()}`);
+  sendMessage(order);
 }, 3000);

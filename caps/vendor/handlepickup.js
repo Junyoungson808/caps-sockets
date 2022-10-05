@@ -1,5 +1,5 @@
 'use strict';
 
 module.exports = (payload) => {
-  console.log('Reciept Confirmation', payload);
+  console.log('Thank you for for the Delivery', payload.id);
 };

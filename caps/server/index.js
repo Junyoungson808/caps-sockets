@@ -11,14 +11,11 @@ const server = new Server(PORT);
 const caps = server.of('/caps')
 
 // connect to server
-server.on('connection', (socket) => {
+caps.on('connection', (socket) => {
   console.log('Socket connected to Event Server!', socket.id);
 
   socket.on('MESSAGE', (payload) => {
     console.log('Server MESSAGE event', payload);
-    // 3 different Types of Messages - 
-    // socket.emit('MESSAGE', payload); // SEND to all parties in the socket - 
-    // server.emit('MESSAGE', payload); // SEND to all parties in the SERVER -
     socket.broadcast.emit('MESSAGE', payload); // SEND to all parties in the socket EXCEPT sender -
   });
 
@@ -33,6 +30,7 @@ caps.on('connection', (socket) => {
 
   // how to join a room
   socket.on('JOIN', (room) => {
+    socket.join(room);
     console.log(`You've joined the ${room} room`);
   });
 

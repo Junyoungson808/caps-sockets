@@ -6,6 +6,6 @@ const socket = io('http://localhost:3002/caps');
 const createHandleMessage = require('./notification');
 const handleMessage = createHandleMessage(socket);
 
-socket.emit('JOIN', 'caps');
+socket.emit('JOIN', 'driver');
 
 socket.on('MESSAGE', handleMessage);
