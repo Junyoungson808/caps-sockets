@@ -1,30 +1,24 @@
-# caps-sockets
-lab12
+# caps-sockets - lab 12
 
 ## Author: Junyoung Son
 
-## Credit: 
+## Problem Domain
 
-## Problem Domain:
+  Creating a real-time application using socket.io, connecting clients (driver, vendor, etc) to a server. That would track packages from pickup, in-transit, to delivery. Tracking system for delivery of products or services.
 
-- 
+As a vendor, I want to alert the system when I have a package to be picked up.
+As a driver, I want to be notified when there is a package to be delivered.
+As a driver, I want to alert the system when I have picked up a package and it is in transit.
+As a driver, I want to alert the system when a package has been delivered.
+As a vendor, I want to be notified when my package has been delivered.
 
-## Dependencies:
+## Dependencies
 
-    "base-64": "^1.0.0",
-    "bcrypt": "^5.0.0",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "eslint": "^7.14.0",
-    "express": "^4.17.1",
-    "jest": "^26.6.3",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
-    "pg": "^8.6.0",
-    "sequelize": "^6.6.2",
-    "sequelize-cli": "^6.2.0",
-    "sqlite3": "^5.0.2",
-    "supertest": "^6.0.1"
+    "chance": "^1.1.8",
+    "eslint": "^8.24.0",
+    "socket.io": "^4.5.2",
+    "socket.io-client": "^4.5.2"
 
-## ![UML:](./UML08.png)
-## [Heroku:]()
+## ![UML:](/Diagram%20-%20Untitled.png)
+
+<!-- ## [Heroku:]() -->
