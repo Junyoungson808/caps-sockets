@@ -5,8 +5,8 @@ const socket = io('http://localhost:3002/caps');
 const Chance = require('chance');
 const chance = new Chance();
 
-const handleRecieved = require('./handlepickup');
-const createSendMessage = require('./notificattion');
+const handleRecieved = require('./delivered');
+const createSendMessage = require('./notification');
 const sendMessage = createSendMessage(socket);
 
 // join caps
