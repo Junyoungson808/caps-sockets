@@ -13,7 +13,7 @@ const sendMessage = createSendMessage(socket);
 socket.emit('JOIN', 'vendor');
 
 // 
-socket.on('RECIEVED', handleRecieved);
+socket.on('IN_TRANSIT', handleRecieved);
 
 setInterval(() => {
   const order = {
