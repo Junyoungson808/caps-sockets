@@ -58,6 +58,6 @@ caps.on('connection', (socket) => {
       Object.keys(currentQueue.data).forEach(messageId => {
         socket.emit('DELIVERED', currentQueue.read(messageId));
       });
-    };
+    }
   });
 });
