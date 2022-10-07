@@ -15,7 +15,7 @@ flowerVendor.subscribe('DELIVERED', (payload) => {
 });
 
 setInterval(() => {
-  console.log('---------ORDER READY FOR PICKUP----------');
+  console.log('------1-800-flowers: Flowers Ready For Pick Up------');
   let payload = {
     messageId: chance.guid(),
     store: '1-800-flowers',
