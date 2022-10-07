@@ -3,7 +3,7 @@
 const { io } = require('socket.io-client');
 const socket = io('http://localhost:3002/caps');
 
-const handlePickup = require('./handlePickup')(socket);;
+const handlePickup = require('./driverHandler')(socket);
 
 
 socket.emit('GETALL', '1-800-flowers');

@@ -5,7 +5,7 @@ const PORT = process.env.PORT || 3002;
 const server = new Server(PORT);
 // const uuid = require('uuid');
 
-const Queue = require('./lib/queue'); // Queue brought in from ./lib/queue
+const Queue = require('../lib/queue'); // Queue brought in from ./lib/queue
 const messageQueue = new Queue();
 
 const caps = server.of('/caps');
@@ -19,9 +19,9 @@ caps.on('connection', (socket) => {
     console.log('EVENT', { event, time, payload });
   });
 
-  socket.on('JOIN', (queueId) => {
+  socket.on('JOIN', (queueId) => { //JOIN ROOM LISTENER
     socket.join(queueId);
-    socket.emit('JOIN', queueId);
+    socket.emit('JOIN', queueId); // JOIN ROOM Signal to 
   });
 
   socket.on('PICKUP', (payload) => {        // PICKUP LISTENER
@@ -30,16 +30,16 @@ caps.on('connection', (socket) => {
       let queueKey = messageQueue.store(payload.queueId, new Queue());
       currentQueue = messageQueue.read(queueKey);
     }
-    currentQueue.store(payload.messageId, payload)
-    socket.broadcast.emit('PICKUP', payload);
+    currentQueue.store(payload.messageId, payload);
+    caps.emit('PICKUP', payload);
   });
 
   socket.on('IN_TRANSIT', (payload) => {      // IN_TRANSIT LISTENER
-    socket.broadcast.emit('IN_TRANSIT', payload); // Data where does it come from?
+    caps.emit('IN_TRANSIT', payload);               // IN_TRANSIT SIGNAL ---- Goes to 
   });
 
-  socket.on('DELIVERED', (payload) => {
-    socket.broadcast.emit('DELIVERED', payload); // Data where does it come from?
+  socket.on('DELIVERED', (payload) => {       // DELIVERED LISTENER
+    caps.emit('DELIVERED', payload);                // DELIVERED SIGNAL ---- Goes to 
   });
 
   socket.on('vendor:MessageRecieved', (payload) => { // Messages in queue that have been read
@@ -48,6 +48,7 @@ caps.on('connection', (socket) => {
       throw new Error('No Queue Created, messaging error');
     }
     let deleteMessage = currentQueue.remove(payload.messageId);
+    return deleteMessage;
   });
 
   socket.on('GETALL', (queueId) => {

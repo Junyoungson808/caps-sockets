@@ -14,6 +14,8 @@ vendor.subscribe('DELIVERED', (payload) => {
   vendor.publish('vendor:MessageRecieved', payload);
 });
 
+
+
 setInterval(() => {
   console.log('------Acme-Widgets: Widgets Ready For Pick Up------');
   let payload = {
