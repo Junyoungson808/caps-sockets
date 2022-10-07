@@ -8,5 +8,5 @@ module.exports = (socket) => (payload) => {
   setTimeout(() => {
     console.log(`DRIVER: DELIVERED PACKAGE ${payload.orderId}`);
     socket.emit('DELIVERED', payload);
-  }, 5000);
+  }, 2500);
 };

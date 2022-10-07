@@ -19,10 +19,13 @@ setInterval(() => {
   let payload = {
     messageId: chance.guid(),
     store: '1-800-flowers',
-    orderId: chance.string(),
+    orderId: chance.string({ length: 8, casing: 'upper', alpha: true, numeric: true }),
     customer: chance.name(),
     address: `${chance.address()}, ${chance.city()}, ${chance.state()}`,
-  }
+  };
   socket.emit('PICKUP', payload);
-}, 8000);
+}, 2000);
 
+setInterval(() => {
+  console.log(`----------1-800-flowers: Flowers Delivered----------`);
+}, 3000);

@@ -14,16 +14,18 @@ vendor.subscribe('DELIVERED', (payload) => {
   vendor.publish('vendor:MessageRecieved', payload);
 });
 
-
-
 setInterval(() => {
-  console.log('------Acme-Widgets: Widgets Ready For Pick Up------');
   let payload = {
     messageId: chance.guid(),
     store: 'acme-widgets',
-    orderId: chance.string(),
+    orderId: chance.string({ length: 8, casing: 'upper', alpha: true, numeric: true }),
     customer: chance.name(),
     address: `${chance.address()}, ${chance.city()}, ${chance.state()}`,
-  }
+  };
+  console.log(`------Acme-Widgets: Widgets Ready For Pick Up------`);
   socket.emit('PICKUP', payload);
-}, 8000);
+}, 2000);
+
+setInterval(() => {
+  console.log(`----------Acme-Widgets: Widgets Delivered----------`);
+}, 3000);
